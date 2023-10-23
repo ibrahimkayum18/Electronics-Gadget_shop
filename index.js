@@ -9,10 +9,10 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 //shopifyProducts
-//n9B0hPYi05cFqYHf
+//D8w95RdmzdUl9jrJ
 
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.pqcfxjd.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv:// ibrahimkayum017:D8w95RdmzdUl9jrJ@cluster0.pqcfxjd.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -28,14 +28,18 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-    const userCollection = client.db("shopifyProductsDB").collection("shopifyProducts")
+    const shopifyCollection = client.db("shopifyProductsDB").collection("shopifyProducts")
     //Access data from front end
     app.post('/shopifyProducts', async (req, res) => {
         const products = req.body;
-        const result = await userCollection.insertOne(products);
+        const result = await shopifyCollection.insertOne(products);
         res.send(result)
     })
 
+    app.get('/shopifyProducts', async(req, res) => {
+          const result = await shopifyCollection.find().toArray();
+          res.send(result);
+      })
 
 
 
