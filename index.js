@@ -8,8 +8,6 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-//shopifyProducts
-//D8w95RdmzdUl9jrJ
 
 
 const uri = `mongodb+srv://ibrahimkayum017:D8w95RdmzdUl9jrJ@cluster0.pqcfxjd.mongodb.net/?retryWrites=true&w=majority`;
